@@ -2,11 +2,8 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import User from './model/user';
-
+const config = require('./config.json');
 var bodyParser = require('body-parser');
-
-require("dotenv/config");
-
 const app = express();
 
 app.use(cors());
@@ -30,13 +27,13 @@ app.post('/create-user', jsonParser, async (req, res) => {
 })
 
 mongoose.connect(
-  process.env.DB_CONNECTION_STRING,
+  config.connectionString,
   { useUnifiedTopology: true, useNewUrlParser: true },
   (req, res) => {
     console.log("Connected to database")
   }
 );
 
-app.listen(process.env.PORT, function() {
-    console.log(`listening on ${process.env.PORT}`)
+app.listen(4000, function() {
+    console.log('listening on 4000');
   })
