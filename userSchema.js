@@ -5,6 +5,6 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: [true, 'Username is required']
     },
-  })
+  });
   
-  module.exports = userSchema
+  module.exports = userSchema;
