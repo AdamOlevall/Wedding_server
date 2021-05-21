@@ -20,19 +20,17 @@ var transporter = nodemailer.createTransport({
 });
 
 
-app.get('/users', async (req, res) => {
+app.get('/attenders', async (req, res) => {
     const users = await User.find();
-    console.log("what", users);
     res.send(users);
 });
 
-app.post('/create-user', jsonParser, async (req, res) => {
-    console.log("test", req.body);
-    var mailOptions = {
+app.post('/post-form', jsonParser, async (req, res) => {
+    const mailOptions = {
         from: 'adamolevall@gmail.com',
         to: 'einarssonwedding@gmail.com',
         subject: req.body.firstName + ' ' + req.body.lastName,
-        text: `Namn: ${req.body.firstName} ${req.body.lastName}\nMail: ${req.body.mail}\nTelefon: ${req.body.phone}\nKommer dagen innan: ${req.body.dayBefore}\nKommer på bröllopet: ${req.body.weddingDay}\nKött: ${req.body.meat}\nFisk: ${req.body.fish}\nVegan: ${req.body.vegan}\nVegetariskt: ${req.body.vegetarian}\nTransport: ${req.body.transport}`,
+        text: `Namn: ${req.body.firstName} ${req.body.lastName}\nMail: ${req.body.mail}\nTelefon: ${req.body.phone}\nKommer dagen innan: ${req.body.dayBefore}\nKommer på bröllopet: ${req.body.weddingDay}\nTransport: ${req.body.transport}\nKött: ${req.body.meat}\nFisk: ${req.body.fish}\nVegan: ${req.body.vegan}\nVegetariskt: ${req.body.vegetarian}\nAllergier: ${req.body.allergy}`,
     };
     await transporter.sendMail(mailOptions, function(error, info){
         if (error) {

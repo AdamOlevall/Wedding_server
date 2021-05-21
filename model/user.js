@@ -17,6 +17,10 @@ const User = mongoose.Schema({
         type: String,
         required: [true, 'lastName is required']
     },
+    allergy: {
+        type: String,
+        required: [false]
+    },
     mail: {
         type: String,
         required: [true, 'mail is required']
