@@ -16,13 +16,7 @@ app.get('/attenders', async (req, res) => {
 });
 
 app.post('/post-form', jsonParser, async (req, res) => {
-  try {
-    const myUser = new User(req.body);
-    await myUser.save();
-    res.send(myUser);
-  } catch (err) {
-    res.status(400).send(err);
-  }
+  res.send("okey");
 });
 
 mongoose.connect(
