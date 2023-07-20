@@ -17,11 +17,8 @@ app.get('/attenders', async (req, res) => {
 
 app.post('/post-form', jsonParser, async (req, res) => {
   try {
-    console.log("get post form")
-    const myUser = new User(req.body);
-    console.log("created myUser")
+    const myUser = new User(req.body); 
     await myUser.save();
-    console.log("saved myUser")
     res.send(myUser);
   } catch (err) {
     res.status(400).send(err);
