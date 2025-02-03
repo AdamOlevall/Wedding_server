@@ -13,13 +13,17 @@ const User = mongoose.Schema({
         type: String,
         required: [false]
     },
+    kids: {
+        type: String,
+        required: [false]
+    },
+    mingle: {
+        type: String,
+        required: [true, 'mingle is required']
+    },
     weddingDay: {
         type: String,
         required: [true, 'weddingDay is required']
-    },
-    transport: {
-        type: String,
-        required: [true, 'transport is required']
     },
 });
 
